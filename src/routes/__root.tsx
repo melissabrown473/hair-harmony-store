@@ -77,9 +77,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Trissa — Premium Hair Extensions & Beauty Store" },
-      { name: "description", content: "Trissa is a luxury hair beauty store offering premium extensions, wigs, hair care and accessories crafted for lasting shine and volume." },
-      { property: "og:title", content: "Trissa — Premium Hair Extensions & Beauty Store" },
+      { title: "Hair Harmony Store — Premium Hair Extensions, Wigs & Accessories" },
+      { name: "description", content: "Hair Harmony Store is a luxury hair beauty boutique offering premium extensions, lace wigs, hair care and accessories crafted for lasting shine and volume." },
+      { property: "og:title", content: "Hair Harmony Store — Premium Hair Extensions, Wigs & Accessories" },
       { property: "og:description", content: "Luxury hair extensions, wigs, hair care and accessories crafted for lasting shine and volume." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
