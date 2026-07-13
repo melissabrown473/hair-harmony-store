@@ -132,40 +132,9 @@ function Home() {
       {/* Header */}
       <SiteHeader />
 
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-ink text-primary-foreground">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-6 py-16 md:grid-cols-2 md:py-24">
-          <div className="relative z-10">
-            <span className="mb-4 inline-block text-xs uppercase tracking-[0.3em] text-gold">Premium Hair Boutique</span>
-            <h1 className="font-display text-5xl leading-[1.05] md:text-7xl">
-              Look Great <br />with <em className="not-italic text-gold">Extensions</em>
-            </h1>
-            <ul className="mt-8 space-y-2 text-sm text-primary-foreground/80">
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-gold" /> 100% Remy Human Hair</li>
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-gold" /> Hand-Tied & Tangle Free</li>
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-gold" /> Cruelty-Free Sourcing</li>
-            </ul>
-            <div className="mt-8 flex gap-3">
-              <Link to="/shop" className="inline-flex items-center rounded-sm bg-gold px-6 py-3 text-sm font-medium text-gold-foreground transition hover:brightness-110">
-                Shop Collection
-              </Link>
-              <Link to="/about" className="inline-flex items-center rounded-sm border border-primary-foreground/30 px-6 py-3 text-sm font-medium text-primary-foreground/90 transition hover:bg-primary-foreground/10">
-                Learn More
-              </Link>
-            </div>
-          </div>
-          <div className="relative">
-            <img
-              src={heroModel}
-              alt="Woman with long flowing extensions"
-              width={1400}
-              height={1000}
-              className="h-[480px] w-full rounded-sm object-cover md:h-[560px]"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink via-transparent to-transparent md:from-ink/70" />
-          </div>
-        </div>
-      </section>
+      {/* Hero Slider */}
+      <HeroSlider />
+
 
       {/* Featured Collections */}
       <section className="relative bg-[image:radial-gradient(ellipse_at_top,var(--cream),transparent_60%)] py-20">
