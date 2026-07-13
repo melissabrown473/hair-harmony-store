@@ -161,17 +161,17 @@ function ShopPage() {
       <section className="border-t border-border bg-cream py-14">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-gold">Not sure where to start?</p>
-          <h3 className="mt-2 font-display text-3xl">Browse by texture</h3>
+          <h3 className="mt-2 font-display text-3xl">Browse by category</h3>
           <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
             {[
-              { label: "Straight", img: product2 },
-              { label: "Wavy", img: product4 },
-              { label: "Curly", img: product1 },
-              { label: "Coily", img: program2 },
+              { label: "Extensions", img: product2 },
+              { label: "Wigs", img: program3 },
+              { label: "Accessories", img: accessoriesImg },
+              { label: "Hair Care", img: collection1 },
             ].map((t) => (
               <button
                 key={t.label}
-                onClick={() => setActive(`${t.label} Hair` as (typeof CATEGORIES)[number])}
+                onClick={() => setActive(t.label as (typeof CATEGORIES)[number])}
                 className="group overflow-hidden rounded-sm bg-background text-left"
               >
                 <img src={t.img} alt={t.label} className="h-40 w-full object-cover transition group-hover:scale-105" />
