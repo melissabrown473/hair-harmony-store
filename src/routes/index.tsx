@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { Search, ShoppingBag, User, Star, Facebook, Instagram, Twitter, Youtube, Quote, Sparkles, Mail } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Search, ShoppingBag, User, Star, Facebook, Instagram, Twitter, Youtube, Quote, Sparkles, Mail, ChevronLeft, ChevronRight } from "lucide-react";
 
 import heroModel from "@/assets/hero-model.jpg";
 import collection1 from "@/assets/collection-1.jpg";
@@ -78,6 +78,123 @@ const testimonials = [
   { name: "Amelia W.", role: "Bridal Client", text: "The accessories collection is exquisite — I wore the pearl pins for my wedding and got compliments every single time I turned around." },
 ];
 
+const heroSlides = [
+  {
+    kicker: "Premium Hair Boutique",
+    title: "Look Great with",
+    accent: "Extensions",
+    desc: "100% Remy human hair, hand-tied and tangle free. Length, volume and shine — on demand.",
+    img: heroModel,
+    cta: "Shop Extensions",
+  },
+  {
+    kicker: "HD Lace Collection",
+    title: "Wigs that feel",
+    accent: "invisible",
+    desc: "Glueless, pre-plucked HD lace wigs in every texture — ready to wear straight out of the box.",
+    img: program3,
+    cta: "Shop Wigs",
+  },
+  {
+    kicker: "Little details, big impact",
+    title: "Luxury Hair",
+    accent: "Accessories",
+    desc: "Pearl pins, gilded combs, silk scrunchies and bridal tiaras — the finishing touch on any look.",
+    img: accessoriesImg,
+    cta: "Shop Accessories",
+  },
+  {
+    kicker: "Every strand matters",
+    title: "Salon-grade",
+    accent: "Hair Care",
+    desc: "Argan, keratin and botanical formulas that restore shine and strengthen from root to tip.",
+    img: mission1,
+    cta: "Shop Hair Care",
+  },
+  {
+    kicker: "New Season Edit",
+    title: "Curls that",
+    accent: "bounce back",
+    desc: "Defined, moisture-locked curls and coils — extensions and wigs styled for natural texture.",
+    img: program2,
+    cta: "Explore Collection",
+  },
+];
+
+function HeroSlider() {
+  const [i, setI] = useState(0);
+  const total = heroSlides.length;
+  const go = (n: number) => setI((n + total) % total);
+
+  useEffect(() => {
+    const t = setInterval(() => setI((p) => (p + 1) % total), 6000);
+    return () => clearInterval(t);
+  }, [total]);
+
+  return (
+    <section className="relative overflow-hidden bg-ink text-primary-foreground">
+      <div className="relative h-[560px] md:h-[640px]">
+        {heroSlides.map((s, idx) => (
+          <div
+            key={s.accent}
+            className={`absolute inset-0 transition-opacity duration-1000 ${idx === i ? "opacity-100" : "pointer-events-none opacity-0"}`}
+            aria-hidden={idx !== i}
+          >
+            <img src={s.img} alt="" className="absolute inset-0 h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/20" />
+            <div className="relative mx-auto flex h-full max-w-7xl items-center px-6">
+              <div className="max-w-xl animate-fade-in">
+                <span className="mb-4 inline-block text-xs uppercase tracking-[0.3em] text-gold">{s.kicker}</span>
+                <h1 className="font-display text-5xl leading-[1.05] md:text-7xl">
+                  {s.title} <br />
+                  <em className="not-italic text-gold">{s.accent}</em>
+                </h1>
+                <p className="mt-6 max-w-md text-sm text-primary-foreground/80">{s.desc}</p>
+                <div className="mt-8 flex gap-3">
+                  <Link to="/shop" className="inline-flex items-center rounded-sm bg-gold px-6 py-3 text-sm font-medium text-gold-foreground transition hover:brightness-110">
+                    {s.cta}
+                  </Link>
+                  <Link to="/about" className="inline-flex items-center rounded-sm border border-primary-foreground/30 px-6 py-3 text-sm font-medium text-primary-foreground/90 transition hover:bg-primary-foreground/10">
+                    Learn More
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+
+        {/* Arrows */}
+        <button
+          onClick={() => go(i - 1)}
+          aria-label="Previous slide"
+          className="absolute left-4 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-primary-foreground/30 bg-ink/40 text-primary-foreground backdrop-blur transition hover:bg-gold hover:text-gold-foreground md:left-8"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+        <button
+          onClick={() => go(i + 1)}
+          aria-label="Next slide"
+          className="absolute right-4 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-primary-foreground/30 bg-ink/40 text-primary-foreground backdrop-blur transition hover:bg-gold hover:text-gold-foreground md:right-8"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
+
+        {/* Dots */}
+        <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+          {heroSlides.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => go(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`h-1.5 rounded-full transition-all ${idx === i ? "w-8 bg-gold" : "w-4 bg-primary-foreground/40 hover:bg-primary-foreground/70"}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ProductCard({ p }: { p: Product }) {
   return (
     <article className="group relative overflow-hidden rounded-sm bg-background transition hover:shadow-[0_20px_50px_-25px_rgba(0,0,0,0.35)]">
@@ -132,40 +249,9 @@ function Home() {
       {/* Header */}
       <SiteHeader />
 
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-ink text-primary-foreground">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-6 py-16 md:grid-cols-2 md:py-24">
-          <div className="relative z-10">
-            <span className="mb-4 inline-block text-xs uppercase tracking-[0.3em] text-gold">Premium Hair Boutique</span>
-            <h1 className="font-display text-5xl leading-[1.05] md:text-7xl">
-              Look Great <br />with <em className="not-italic text-gold">Extensions</em>
-            </h1>
-            <ul className="mt-8 space-y-2 text-sm text-primary-foreground/80">
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-gold" /> 100% Remy Human Hair</li>
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-gold" /> Hand-Tied & Tangle Free</li>
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-gold" /> Cruelty-Free Sourcing</li>
-            </ul>
-            <div className="mt-8 flex gap-3">
-              <Link to="/shop" className="inline-flex items-center rounded-sm bg-gold px-6 py-3 text-sm font-medium text-gold-foreground transition hover:brightness-110">
-                Shop Collection
-              </Link>
-              <Link to="/about" className="inline-flex items-center rounded-sm border border-primary-foreground/30 px-6 py-3 text-sm font-medium text-primary-foreground/90 transition hover:bg-primary-foreground/10">
-                Learn More
-              </Link>
-            </div>
-          </div>
-          <div className="relative">
-            <img
-              src={heroModel}
-              alt="Woman with long flowing extensions"
-              width={1400}
-              height={1000}
-              className="h-[480px] w-full rounded-sm object-cover md:h-[560px]"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink via-transparent to-transparent md:from-ink/70" />
-          </div>
-        </div>
-      </section>
+      {/* Hero Slider */}
+      <HeroSlider />
+
 
       {/* Featured Collections */}
       <section className="relative bg-[image:radial-gradient(ellipse_at_top,var(--cream),transparent_60%)] py-20">
