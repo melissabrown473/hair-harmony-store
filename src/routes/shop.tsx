@@ -35,58 +35,43 @@ export const Route = createFileRoute("/shop")({
 
 type Product = { title: string; price: string; img: string; tag?: string; category: string };
 
-const CATEGORIES = [
-  "All",
-  "Straight Hair",
-  "Wavy Hair",
-  "Curly Hair",
-  "Coily Hair",
-  "Lace Wigs",
-  "Hair Care",
-  "Hair Accessories",
-] as const;
+const CATEGORIES = ["All", "Extensions", "Wigs", "Accessories", "Hair Care"] as const;
 
 const ALL_PRODUCTS: Product[] = [
-  // Straight
-  { title: "Silky Black Straight 20\"", price: "$119.00", img: product2, tag: "Best", category: "Straight Hair" },
-  { title: "Platinum Blonde Straight 22\"", price: "$149.00", img: product3, tag: "Hot", category: "Straight Hair" },
-  { title: "Chocolate Brown Straight 18\"", price: "$109.00", img: collection2, category: "Straight Hair" },
-  { title: "Auburn Straight Silk 24\"", price: "$159.00", tag: "New", img: mission2, category: "Straight Hair" },
-
-  // Wavy
-  { title: "Caramel Wavy Bundle 22\"", price: "$99.00", img: product4, tag: "New", category: "Wavy Hair" },
-  { title: "Beach Wave Ombre 20\"", price: "$129.00", img: collection3, category: "Wavy Hair" },
-  { title: "Honey Body Wave 18\"", price: "$119.00", tag: "Hot", img: program1, category: "Wavy Hair" },
-  { title: "Golden Loose Wave 24\"", price: "$149.00", img: mission1, category: "Wavy Hair" },
-
-  // Curly
-  { title: "Curly Auburn Extension 18\"", price: "$89.00", img: product1, tag: "New", category: "Curly Hair" },
-  { title: "Deep Curl Natural 20\"", price: "$139.00", img: program2, tag: "Best", category: "Curly Hair" },
-  { title: "Spiral Curl Bounce 16\"", price: "$99.00", img: collection1, category: "Curly Hair" },
-
-  // Coily
-  { title: "Kinky Coily Afro 14\"", price: "$129.00", tag: "New", img: program2, category: "Coily Hair" },
-  { title: "4C Natural Coil 16\"", price: "$139.00", img: mission1, category: "Coily Hair" },
+  // Extensions (straight/wavy/curly/coily)
+  { title: "Silky Black Straight 20\"", price: "$119.00", img: product2, tag: "Best", category: "Extensions" },
+  { title: "Platinum Blonde Straight 22\"", price: "$149.00", img: product3, tag: "Hot", category: "Extensions" },
+  { title: "Chocolate Brown Straight 18\"", price: "$109.00", img: collection2, category: "Extensions" },
+  { title: "Auburn Straight Silk 24\"", price: "$159.00", tag: "New", img: mission2, category: "Extensions" },
+  { title: "Caramel Wavy Bundle 22\"", price: "$99.00", img: product4, tag: "New", category: "Extensions" },
+  { title: "Beach Wave Ombre 20\"", price: "$129.00", img: collection3, category: "Extensions" },
+  { title: "Honey Body Wave 18\"", price: "$119.00", tag: "Hot", img: program1, category: "Extensions" },
+  { title: "Golden Loose Wave 24\"", price: "$149.00", img: mission1, category: "Extensions" },
+  { title: "Curly Auburn Extension 18\"", price: "$89.00", img: product1, tag: "New", category: "Extensions" },
+  { title: "Deep Curl Natural 20\"", price: "$139.00", img: program2, tag: "Best", category: "Extensions" },
+  { title: "Spiral Curl Bounce 16\"", price: "$99.00", img: collection1, category: "Extensions" },
+  { title: "Kinky Coily Afro 14\"", price: "$129.00", tag: "New", img: program2, category: "Extensions" },
+  { title: "4C Natural Coil 16\"", price: "$139.00", img: mission1, category: "Extensions" },
 
   // Wigs
-  { title: "HD Lace Straight Wig", price: "$299.00", img: program3, tag: "Best", category: "Lace Wigs" },
-  { title: "Loose Wave Lace Front", price: "$249.00", img: program1, tag: "Hot", category: "Lace Wigs" },
-  { title: "Deep Curl Full Lace Wig", price: "$279.00", img: program2, category: "Lace Wigs" },
-  { title: "Body Wave Glueless Wig", price: "$229.00", img: collection2, tag: "New", category: "Lace Wigs" },
+  { title: "HD Lace Straight Wig", price: "$299.00", img: program3, tag: "Best", category: "Wigs" },
+  { title: "Loose Wave Lace Front", price: "$249.00", img: program1, tag: "Hot", category: "Wigs" },
+  { title: "Deep Curl Full Lace Wig", price: "$279.00", img: program2, category: "Wigs" },
+  { title: "Body Wave Glueless Wig", price: "$229.00", img: collection2, tag: "New", category: "Wigs" },
+
+  // Accessories
+  { title: "Pearl Hair Pins Set", price: "$24.00", img: accessoriesImg, tag: "New", category: "Accessories" },
+  { title: "Gold Hair Clip Duo", price: "$18.00", img: blog1, tag: "Hot", category: "Accessories" },
+  { title: "Tortoise Wide-Tooth Comb", price: "$22.00", img: blog2, category: "Accessories" },
+  { title: "Silk Scrunchie Trio", price: "$16.00", img: blog3, tag: "Best", category: "Accessories" },
+  { title: "Bridal Pearl Tiara", price: "$68.00", tag: "New", img: accessoriesImg, category: "Accessories" },
+  { title: "Vintage Barrette Set", price: "$28.00", img: blog1, category: "Accessories" },
 
   // Hair Care
   { title: "Argan Repair Shampoo", price: "$28.00", img: collection1, tag: "Best", category: "Hair Care" },
   { title: "Silk Hydration Conditioner", price: "$32.00", img: collection3, category: "Hair Care" },
   { title: "Keratin Hair Mask", price: "$44.00", tag: "Hot", img: mission1, category: "Hair Care" },
   { title: "Rose Nourishing Hair Oil", price: "$36.00", tag: "New", img: mission2, category: "Hair Care" },
-
-  // Accessories
-  { title: "Pearl Hair Pins Set", price: "$24.00", img: accessoriesImg, tag: "New", category: "Hair Accessories" },
-  { title: "Gold Hair Clip Duo", price: "$18.00", img: blog1, tag: "Hot", category: "Hair Accessories" },
-  { title: "Tortoise Wide-Tooth Comb", price: "$22.00", img: blog2, category: "Hair Accessories" },
-  { title: "Silk Scrunchie Trio", price: "$16.00", img: blog3, tag: "Best", category: "Hair Accessories" },
-  { title: "Bridal Pearl Tiara", price: "$68.00", tag: "New", img: accessoriesImg, category: "Hair Accessories" },
-  { title: "Vintage Barrette Set", price: "$28.00", img: blog1, category: "Hair Accessories" },
 ];
 
 function ShopPage() {
