@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { Search, ShoppingBag, User, Star, Facebook, Instagram, Twitter, Youtube, Quote, Sparkles, Mail } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Search, ShoppingBag, User, Star, Facebook, Instagram, Twitter, Youtube, Quote, Sparkles, Mail, ChevronLeft, ChevronRight } from "lucide-react";
 
 import heroModel from "@/assets/hero-model.jpg";
 import collection1 from "@/assets/collection-1.jpg";
