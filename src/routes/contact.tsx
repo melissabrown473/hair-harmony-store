@@ -100,12 +100,12 @@ function ContactPage() {
               {[
                 {
                   icon: Phone,
-                  title: "+1 (415) 555-0134",
+                  title: "+1 (609) 536-9753",
                   desc: "Customer support",
                 },
                 {
                   icon: Mail,
-                  title: "hello@hairharmony.com",
+                  title: "melissabrown473218@gmail.com ",
                   desc: "Email enquiries",
                 },
                 {
