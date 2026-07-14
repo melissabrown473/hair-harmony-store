@@ -105,7 +105,7 @@ function ContactPage() {
                 },
                 {
                   icon: Mail,
-                  title: "melissabrown473218@gmail.com ",
+                  title: "info@hairharmony.com ",
                   desc: "Email enquiries",
                 },
                 {
