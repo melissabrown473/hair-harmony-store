@@ -5,10 +5,11 @@ import { ProductCard, type Product } from "@/components/products/ProductCard";
 import collection1 from "@/assets/collection-1.jpg";
 import collection2 from "@/assets/collection-2.jpg";
 import collection3 from "@/assets/collection-3.jpg";
-import product1 from "@/assets/product-1.jpg";
+import product1 from "@/assets/product1.jpg";
 import product2 from "@/assets/product-2.jpg";
 import product3 from "@/assets/product-3.jpg";
 import product4 from "@/assets/product-4.jpg";
+import product5 from "@/assets/product-5.jpg";
 import accessoriesImg from "@/assets/accessories.jpg";
 import mission1 from "@/assets/mission-1.jpg";
 import mission2 from "@/assets/mission-2.jpg";
@@ -20,11 +21,13 @@ import blog2 from "@/assets/blog-2.jpg";
 import blog3 from "@/assets/blog-3.jpg";
 
 const featuredByCategory: Record<string, Product[]> = {
+
   Extensions: [
-    { title: "Curly Auburn Extension", price: "$89.00", img: product1, tag: "New" },
-    { title: "Silky Black Straight", price: "$119.00", img: product2, tag: "Best" },
-    { title: "Platinum Blonde 22\"", price: "$149.00", img: product3, tag: "Hot" },
-    { title: "Caramel Wavy Bundle", price: "$99.00", img: product4, tag: "New" },
+    { title: "Curly Auburn Extension", price: "$80.00", img: product1, tag: "New" },
+    { title: " Wavy Slavic Tape-In Hair Extensions", price: "$119.00", img: product2, tag: "Best" },
+    { title: "Hair xEtensions | From Thin to Thick hair", price: "$149.00", img: product3, tag: "Hot" },
+    { title: "32-Inch Ombre Clip-On Ponytail Hair Extensions", price: "$9.00", img: product4, tag: "New" },
+    { title: "Tape-In Extensions", price: "$9.00", img: product5, tag: "New" },
   ],
   Wigs: [
     { title: "Loose Wave Lace Wig", price: "$249.00", img: program1, tag: "New" },

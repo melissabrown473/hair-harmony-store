@@ -26,12 +26,13 @@ function Home() {
       <SiteHeader />
       <HeroSlider />
       <FeaturedCollections />
-      <HairCareStat />
+      {/* <HairCareStat /> */}
       <FeaturedProducts />
       <AccessoriesTeaser />
+      
       <MakeAMoveBanner />
-      <Mission />
       <Programs />
+      <Mission />
       <Blog />
       <Testimonials />
       <Newsletter />

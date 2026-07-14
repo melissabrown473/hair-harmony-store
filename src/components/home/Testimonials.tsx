@@ -1,51 +1,148 @@
 import { Quote, Star } from "lucide-react";
 
 const testimonials = [
-  { name: "Emma R.", role: "Verified Buyer", text: "Hair Harmony completely transformed my hair. The extensions blend seamlessly and feel like my own — I honestly can't tell where mine ends and theirs begins." },
-  { name: "Sophia L.", role: "Stylist", text: "Beautiful quality, beautiful packaging, beautiful people. As a professional stylist, this is the only brand I recommend to my clients now." },
-  { name: "Amelia W.", role: "Bridal Client", text: "The accessories collection is exquisite — I wore the pearl pins for my wedding and got compliments every single time I turned around." },
+  {
+    name: "Emma R.",
+    role: "Verified Buyer",
+    text: "Hair Harmony completely transformed my look. The hair feels unbelievably soft and natural.",
+  },
+  {
+    name: "Sophia L.",
+    role: "Professional Stylist",
+    text: "I've worked with dozens of brands, but this is the one I confidently recommend to every client.",
+  },
+  {
+    name: "Amelia W.",
+    role: "Bride",
+    text: "My wedding hairstyle stayed flawless all day. The quality exceeded every expectation.",
+  },
+  {
+    name: "Jessica K.",
+    role: "Beauty Influencer",
+    text: "The bundles are thick from root to tip and last incredibly well after multiple installs.",
+  },
+  {
+    name: "Olivia M.",
+    role: "Salon Owner",
+    text: "Packaging, customer service and quality are all premium. Worth every penny.",
+  },
+  {
+    name: "Grace T.",
+    role: "Verified Buyer",
+    text: "The lace melted perfectly. Everyone thought it was my natural hair.",
+  },
+  {
+    name: "Charlotte D.",
+    role: "Hair Enthusiast",
+    text: "Silky, luxurious and tangle-free. I couldn't be happier with my purchase.",
+  },
+  {
+    name: "Lily P.",
+    role: "Returning Customer",
+    text: "I've ordered four times already. The consistency is unmatched.",
+  },
+  {
+    name: "Victoria A.",
+    role: "Content Creator",
+    text: "These extensions photograph beautifully and hold curls for days.",
+  },
+  {
+    name: "Mia J.",
+    role: "Verified Buyer",
+    text: "Luxury quality from the first touch. I recommend Hair Harmony to everyone.",
+  },
 ];
 
-export function Testimonials() {
+function TestimonialCard({
+  name,
+  role,
+  text,
+}: (typeof testimonials)[number]) {
   return (
-    <section className="relative overflow-hidden bg-ink py-24 text-primary-foreground">
-      <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full border border-gold/20" />
-      <div className="pointer-events-none absolute -bottom-32 -right-24 h-96 w-96 rounded-full border border-gold/10" />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/5 blur-3xl" />
+   <div
+  className="
+    group mx-3 w-[290px] shrink-0 rounded-2xl
+    border border-[#caa15b]/20
+    bg-gradient-to-br 
+    from-[#2a241c]
+    via-[#17130f]
+    to-[#0d0d0d]
+    p-5
+    shadow-[0_20px_50px_rgba(0,0,0,0.35)]
+    backdrop-blur-md
+    transition-all
+    duration-500
+    hover:-translate-y-2
+    hover:border-[#caa15b]/60
+    hover:shadow-[0_25px_60px_rgba(202,161,91,0.18)]
+  "
+>
+      <Quote className="mb-3 h-7 w-7 text-[#caa15b]" />
 
-      <div className="relative mx-auto max-w-6xl px-6">
-        <div className="mb-14 text-center">
-          <p className="text-xs uppercase tracking-[0.4em] text-gold">Testimonials</p>
-          <h2 className="mt-3 font-display text-4xl md:text-5xl">Loved by thousands worldwide</h2>
-          <div className="mt-4 flex items-center justify-center gap-1 text-gold">
-            {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-current" />)}
-            <span className="ml-2 text-sm text-primary-foreground/70">4.9 average from 2,300+ reviews</span>
-          </div>
+      <div className="mb-3 flex text-[#caa15b]">
+        {[...Array(5)].map((_, i) => (
+          <Star key={i} className="h-3.5 w-3.5 fill-current" />
+        ))}
+      </div>
+
+      <p className="line-clamp-4 text-sm leading-6 text-white/75">
+        "{text}"
+      </p>
+
+      <div className="mt-4 flex items-center gap-3 border-t border-white/10 pt-4">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#caa15b] text-sm font-semibold text-black">
+          {name[0]}
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {testimonials.map((t, idx) => (
-            <figure
-              key={t.name}
-              className={`group relative rounded-lg border border-primary-foreground/10 bg-gradient-to-br from-primary-foreground/[0.07] to-primary-foreground/[0.02] p-8 backdrop-blur transition hover:-translate-y-1 hover:border-gold/40 ${
-                idx === 1 ? "md:-translate-y-4" : ""
-              }`}
-            >
-              <Quote className="absolute -top-4 left-6 h-10 w-10 rounded-full bg-gold p-2 text-gold-foreground shadow-lg" />
-              <div className="mb-4 flex gap-0.5 text-gold">
-                {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
-              </div>
-              <blockquote className="text-sm leading-relaxed text-primary-foreground/85">"{t.text}"</blockquote>
-              <figcaption className="mt-6 flex items-center gap-3 border-t border-primary-foreground/10 pt-4">
-                <div className="grid h-11 w-11 place-items-center rounded-full bg-gold/20 font-display text-gold">
-                  {t.name.charAt(0)}
-                </div>
-                <div>
-                  <p className="font-display text-base text-primary-foreground">{t.name}</p>
-                  <p className="text-xs text-primary-foreground/60">{t.role}</p>
-                </div>
-              </figcaption>
-            </figure>
+        <div>
+          <h4 className="text-sm font-semibold text-white">{name}</h4>
+          <p className="text-xs text-white/50">{role}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function Testimonials() {
+  const top = testimonials.slice(0, 5);
+  const bottom = testimonials.slice(5);
+
+  return (
+    <section className="overflow-hidden bg-black py-28 text-white">
+      <div className="mx-auto mb-16 max-w-3xl text-center">
+        <p className="text-xs uppercase tracking-[0.35em] text-[#caa15b]">
+          Testimonials
+        </p>
+
+        <h2 className="mt-4 font-display text-5xl">
+          Loved Around The World
+        </h2>
+
+        <div className="mt-6 flex items-center justify-center gap-1 text-[#caa15b]">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} className="h-5 w-5 fill-current" />
+          ))}
+
+          <span className="ml-3 text-white/60">
+            4.9/5 from 2,300+ happy customers
+          </span>
+        </div>
+      </div>
+
+      {/* TOP ROW */}
+      <div className="relative flex overflow-hidden">
+        <div className="flex animate-[marquee_35s_linear_infinite]">
+          {[...top, ...top].map((item, index) => (
+            <TestimonialCard key={index} {...item} />
+          ))}
+        </div>
+      </div>
+
+      {/* BOTTOM ROW */}
+      <div className="relative mt-8 flex overflow-hidden">
+        <div className="flex animate-[marquee-reverse_35s_linear_infinite]">
+          {[...bottom, ...bottom].map((item, index) => (
+            <TestimonialCard key={index} {...item} />
           ))}
         </div>
       </div>

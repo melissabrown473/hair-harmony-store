@@ -34,12 +34,12 @@ export function SiteFooter() {
         </div>
         <div>
           <h4 className="font-display text-lg text-primary-foreground">Follow</h4>
-          <div className="mt-4 flex gap-3">
+          {/* <div className="mt-4 flex gap-3">
             <a href="#" aria-label="Facebook" className="grid h-9 w-9 place-items-center rounded-full border border-primary-foreground/20 hover:border-gold hover:text-gold"><Facebook className="h-4 w-4" /></a>
             <a href="#" aria-label="Instagram" className="grid h-9 w-9 place-items-center rounded-full border border-primary-foreground/20 hover:border-gold hover:text-gold"><Instagram className="h-4 w-4" /></a>
             <a href="#" aria-label="Twitter" className="grid h-9 w-9 place-items-center rounded-full border border-primary-foreground/20 hover:border-gold hover:text-gold"><Twitter className="h-4 w-4" /></a>
             <a href="#" aria-label="Youtube" className="grid h-9 w-9 place-items-center rounded-full border border-primary-foreground/20 hover:border-gold hover:text-gold"><Youtube className="h-4 w-4" /></a>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="border-t border-primary-foreground/10">

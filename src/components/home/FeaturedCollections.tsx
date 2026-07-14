@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import collection1 from "@/assets/collection-1.jpg";
-import collection2 from "@/assets/collection-2.jpg";
-import collection3 from "@/assets/collection-3.jpg";
+import collection2 from "@/assets/collection-2.png";
+import collection3 from "@/assets/collection-2.jpg";
 
 const collections = [
   { title: "Shampoo", desc: "Nourishing formulas for every hair type", img: collection1 },
@@ -25,7 +25,7 @@ export function FeaturedCollections() {
             <article key={c.title} className="group flex flex-col overflow-hidden rounded-sm bg-card shadow-[0_10px_40px_-20px_rgba(0,0,0,0.15)]">
               <div className="overflow-hidden">
                 <img src={c.img} alt={c.title} loading="lazy" width={640} height={768}
-                  className="h-[360px] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  className="h-[360px] lg:h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
               </div>
               <div className="p-6 text-center">
                 <h3 className="font-display text-2xl">{c.title}</h3>

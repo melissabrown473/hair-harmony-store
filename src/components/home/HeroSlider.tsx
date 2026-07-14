@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import heroModel from "@/assets/hero-model.jpg";
+import heroModel from "@/assets/hero-model.png";
 import accessoriesImg from "@/assets/accessories.jpg";
 import mission1 from "@/assets/mission-1.jpg";
 import program2 from "@/assets/program-2.jpg";
@@ -28,7 +28,7 @@ export function HeroSlider() {
 
   return (
     <section className="relative overflow-hidden bg-ink text-primary-foreground">
-      <div className="relative h-[560px] md:h-[640px]">
+      <div className="relative h-screen">
         {heroSlides.map((s, idx) => (
           <div
             key={s.accent}
@@ -36,7 +36,7 @@ export function HeroSlider() {
             aria-hidden={idx !== i}
           >
             <img src={s.img} alt="" className="absolute inset-0 h-full w-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/20" />
+            <div className="absolute inset-0 bg-black/40" />
             <div className="relative mx-auto flex h-full max-w-7xl items-center px-6">
               <div className="max-w-xl animate-fade-in">
                 <span className="mb-4 inline-block text-xs uppercase tracking-[0.3em] text-gold">{s.kicker}</span>
@@ -48,9 +48,6 @@ export function HeroSlider() {
                 <div className="mt-8 flex gap-3">
                   <Link to="/shop" className="inline-flex items-center rounded-sm bg-gold px-6 py-3 text-sm font-medium text-gold-foreground transition hover:brightness-110">
                     {s.cta}
-                  </Link>
-                  <Link to="/about" className="inline-flex items-center rounded-sm border border-primary-foreground/30 px-6 py-3 text-sm font-medium text-primary-foreground/90 transition hover:bg-primary-foreground/10">
-                    Learn More
                   </Link>
                 </div>
               </div>

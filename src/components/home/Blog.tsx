@@ -1,36 +1,188 @@
+import { ArrowRight } from "lucide-react";
 import blog1 from "@/assets/blog-1.jpg";
 import blog2 from "@/assets/blog-2.jpg";
 import blog3 from "@/assets/blog-3.jpg";
 
 const blogPosts = [
-  { date: "MAR 08", title: "The complete guide to hair extension care", img: blog1 },
-  { date: "MAR 12", title: "How to choose the right hair color for you", img: blog2 },
-  { date: "MAR 18", title: "Salon secrets for red-carpet worthy waves", img: blog3 },
+  {
+    date: "MAR 08",
+    title: "The complete guide to hair extension care",
+    desc: "Keep your extensions silky, healthy and beautiful with expert care tips.",
+    img: blog1,
+  },
+  {
+    date: "MAR 12",
+    title: "How to choose the right hair color for you",
+    desc: "Discover the perfect shade that complements your style and complexion.",
+    img: blog2,
+  },
+  {
+    date: "MAR 18",
+    title: "Salon secrets for red-carpet worthy waves",
+    desc: "Professional styling techniques for effortless luxury waves.",
+    img: blog3,
+  },
 ];
 
 export function Blog() {
   return (
-    <section className="bg-cream py-20">
+    <section className="bg-[#f8f5ef] py-28">
+
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-14 text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-gold">From the journal</p>
-          <h2 className="mt-3 text-4xl md:text-5xl">Stay Tuned for Updates</h2>
+
+
+        {/* Heading */}
+
+        <div className="mb-16 text-center">
+
+          <p className="text-xs uppercase tracking-[0.4em] text-[#caa15b]">
+            From The Journal
+          </p>
+
+          <h2 className="mt-5 font-display text-5xl">
+            Hair Beauty Insights
+          </h2>
+
+          <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-muted-foreground">
+            Expert advice, styling inspiration and everything you need to
+            maintain your perfect look.
+          </p>
+
         </div>
+
+
+
+        {/* Cards */}
+
         <div className="grid gap-8 md:grid-cols-3">
-          {blogPosts.map((b) => (
-            <article key={b.title} className="overflow-hidden rounded-sm bg-background shadow-[0_10px_40px_-20px_rgba(0,0,0,0.15)]">
-              <img src={b.img} alt={b.title} loading="lazy" width={720} height={560} className="h-56 w-full object-cover" />
-              <div className="p-6">
-                <span className="text-xs uppercase tracking-widest text-gold">{b.date}</span>
-                <h3 className="mt-2 font-display text-xl leading-snug">{b.title}</h3>
-                <button className="mt-4 rounded-sm bg-gold px-4 py-2 text-[10px] font-medium uppercase tracking-widest text-gold-foreground">
-                  Read More
-                </button>
+
+          {blogPosts.map((post)=>(
+
+            <article
+              key={post.title}
+              className="
+              group
+              overflow-hidden
+              rounded-2xl
+              bg-white
+              shadow-sm
+              transition
+              hover:-translate-y-2
+              hover:shadow-xl
+              "
+            >
+
+
+              {/* Image */}
+
+              <div className="relative h-[320px] overflow-hidden">
+
+                <img
+                  src={post.img}
+                  alt={post.title}
+                  loading="lazy"
+                  className="
+                  h-full
+                  w-full
+                  object-cover
+                  transition
+                  duration-700
+                  group-hover:scale-110
+                  "
+                />
+
+
+                <div className="
+                  absolute
+                  inset-0
+                  bg-gradient-to-t
+                  from-black/50
+                  to-transparent
+                "/>
+
+
+                <span
+                  className="
+                  absolute
+                  left-6
+                  top-6
+                  rounded-full
+                  bg-[#caa15b]
+                  px-4
+                  py-2
+                  text-[10px]
+                  font-semibold
+                  tracking-widest
+                  text-black
+                  "
+                >
+                  {post.date}
+                </span>
+
+
               </div>
+
+
+
+              {/* Content */}
+
+              <div className="p-7">
+
+
+                <h3 className="
+                  font-display
+                  text-2xl
+                  leading-snug
+                ">
+                  {post.title}
+                </h3>
+
+
+                <p className="
+                  mt-4
+                  text-sm
+                  leading-7
+                  text-muted-foreground
+                ">
+                  {post.desc}
+                </p>
+
+
+
+                <button
+                  className="
+                  mt-6
+                  flex
+                  items-center
+                  gap-2
+                  text-xs
+                  font-semibold
+                  uppercase
+                  tracking-widest
+                  text-[#caa15b]
+                  transition
+                  group-hover:gap-4
+                  "
+                >
+                  Read Article
+
+                  <ArrowRight className="h-4 w-4"/>
+
+                </button>
+
+
+              </div>
+
+
             </article>
+
           ))}
+
         </div>
+
+
       </div>
+
     </section>
   );
 }
