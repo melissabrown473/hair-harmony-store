@@ -6,8 +6,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-import accessoriesImg from "@/assets/accessories.jpg";
-
 const features = [
   {
     icon: Gem,
@@ -31,7 +29,7 @@ export function AccessoriesTeaser() {
 
         <div className="relative">
           <img
-            src={accessoriesImg}
+            src="/assets/accessories.jpg"
             alt="Luxury Hair Accessories"
             className="h-[620px] w-full rounded-2xl object-cover shadow-2xl"
           />

@@ -1,30 +1,26 @@
 import { Link } from "@tanstack/react-router";
-import mission1 from "@/assets/mission-1.jpg";
-import mission2 from "@/assets/mission-2.jpg";
-import collection1 from "@/assets/collection-1.jpg";
-import collection2 from "@/assets/collection-2.jpg";
 
 const cards = [
   {
-    image: mission1,
+    image: "/assets/mission-1.jpg",
     title: "Luxury Curly Bundle",
     desc: "Soft, thick and long-lasting premium curls with a natural shine.",
     price: "$220",
   },
   {
-    image: mission2,
+    image: "/assets/mission-2.jpg",
     title: "Body Wave",
     desc: "Silky body wave extensions that blend beautifully with natural hair.",
     price: "$180",
   },
   {
-    image: collection1,
+    image: "/assets/collection-1.jpg",
     title: "Straight Collection",
     desc: "Premium virgin straight hair with a sleek, luxurious finish.",
     price: "$195",
   },
   {
-    image: collection2,
+    image: "/assets/collection-2.jpg",
     title: "Deep Wave",
     desc: "Voluminous deep wave bundles that hold their curl beautifully.",
     price: "$240",
@@ -64,7 +60,7 @@ export function Mission() {
           </div>
 
           {/* RIGHT GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {cards.map((card) => (
               <div
                 key={card.title}

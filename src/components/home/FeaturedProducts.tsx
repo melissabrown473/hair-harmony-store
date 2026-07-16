@@ -2,51 +2,55 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ProductCard, type Product } from "@/components/products/ProductCard";
 
-import collection1 from "@/assets/collection-1.jpg";
-import collection2 from "@/assets/collection-2.jpg";
-import collection3 from "@/assets/collection-3.jpg";
-import product1 from "@/assets/product1.jpg";
-import product2 from "@/assets/product-2.jpg";
-import product3 from "@/assets/product-3.jpg";
-import product4 from "@/assets/product-4.jpg";
-import product5 from "@/assets/product-5.jpg";
-import accessoriesImg from "@/assets/accessories.jpg";
-import mission1 from "@/assets/mission-1.jpg";
-import mission2 from "@/assets/mission-2.jpg";
-import program1 from "@/assets/program-1.jpg";
-import program2 from "@/assets/program-2.jpg";
-import program3 from "@/assets/program-3.jpg";
-import blog1 from "@/assets/blog-1.jpg";
-import blog2 from "@/assets/blog-2.jpg";
-import blog3 from "@/assets/blog-3.jpg";
+
 
 const featuredByCategory: Record<string, Product[]> = {
 
-  Extensions: [
-    { title: "Curly Auburn Extension", price: "$80.00", img: product1, tag: "New" },
-    { title: " Wavy Slavic Tape-In Hair Extensions", price: "$119.00", img: product2, tag: "Best" },
-    { title: "Hair xEtensions | From Thin to Thick hair", price: "$149.00", img: product3, tag: "Hot" },
-    { title: "32-Inch Ombre Clip-On Ponytail Hair Extensions", price: "$9.00", img: product4, tag: "New" },
-    { title: "Tape-In Extensions", price: "$9.00", img: product5, tag: "New" },
-  ],
-  Wigs: [
-    { title: "Loose Wave Lace Wig", price: "$249.00", img: program1, tag: "New" },
-    { title: "Deep Curl Full Wig", price: "$279.00", img: program2, tag: "Hot" },
-    { title: "Silk Straight HD Lace", price: "$299.00", img: program3, tag: "Best" },
-    { title: "Body Wave Glueless", price: "$229.00", img: collection2, tag: "New" },
-  ],
-  "Hair Care": [
-    { title: "Argan Repair Shampoo", price: "$28.00", img: collection1, tag: "Best" },
-    { title: "Silk Conditioner", price: "$32.00", img: collection3, tag: "New" },
-    { title: "Keratin Hair Mask", price: "$44.00", img: mission1, tag: "Hot" },
-    { title: "Rose Hair Oil", price: "$36.00", img: mission2, tag: "New" },
-  ],
-  Accessories: [
-    { title: "Pearl Hair Pins Set", price: "$24.00", img: accessoriesImg, tag: "New" },
-    { title: "Gold Hair Clip", price: "$18.00", img: blog1, tag: "Hot" },
-    { title: "Tortoise Comb", price: "$22.00", img: blog2, tag: "Best" },
-    { title: "Silk Scrunchie Trio", price: "$16.00", img: blog3, tag: "New" },
-  ],
+Extensions: [
+  { title: "Curly Auburn Extension", price: "$80.00", img: "/assets/product-1.jpg", tag: "New" },
+  { title: "Wavy Slavic Tape-In Hair Extensions", price: "$119.00", img: "/assets/product-2.jpg", tag: "Best" },
+  { title: "Hair Extensions | From Thin to Thick Hair", price: "$149.00", img: "/assets/product-3.jpg", tag: "Hot" },
+  { title: "32-Inch Ombre Clip-On Ponytail", price: "$99.00", img: "/assets/product-4.jpg", tag: "New" },
+  { title: "Tape-In Extensions", price: "$89.00", img: "/assets/product-5.jpg", tag: "New" },
+],
+
+Wigs: [
+  { title: "Water Wave 5x5 Closure HD Lace Glueless Free Part Long Wig", price: "$249.00", img: "/assets/program-1.jpg", tag: "New" },
+  { title: " Glueless Custom Wigs ", price: "$279.00", img: "/assets/program-2.jpg", tag: "Hot" },
+  { title: "Silk Straight HD Lace", price: "$299.00", img: "/assets/program-3.jpg", tag: "Best" },
+  { title: "Body Wave Glueless", price: "$229.00", img: "/assets/collection-2.jpg", tag: "New" },
+],
+
+"Hair Care": [
+  { title: "Argan Repair Shampoo", price: "$28.00", img: "/assets/collection-1.jpg", tag: "Best" },
+  { title: "GOT2B Glued", price: "$32.00", img: "/assets/collection-3.jpg", tag: "New" },
+  { title: "Hair Vitamins", price: "$44.00", img: "/assets/mission-5.jpg", tag: "Hot" },
+  { title: "Oil Control Shampoo Refreshing ", price: "$36.00", img: "/assets/mission-6.png", tag: "New" },
+],
+
+
+
+
+Accessories: [
+  { title: "Hair Brush Set with Hair Spray Bottle", price: "$24.00", img: "/assets/accessories6.jpg", tag: "New" },
+  { title: "Gold Hair Clip", price: "$18.00", img: "/assets/accessories7.jpg", tag: "Hot" },
+  { title: "Hair Straightener LCD", price: "$22.00", img: "/assets/accessories8.jpg", tag: "Best" },
+  { title: "Elite Hair Steamer", price: "$16.00", img: "/assets/accessories9.jpg", tag: "New" },
+],
+
+Braiding: [
+  { title: "5-Pack Synthetic Jumbo Braided Hair Extensions", price: "$120.00", img: "/assets/braiding.png", tag: "Popular" },
+  { title: "Curly Fulani Boho Deep Wave Crochet Hypoallergenic", price: "$95.00", img: "/assets/braiding4.png", tag: "Trending" },
+  { title: "Pre-Stretched Braiding Hair", price: "$150.00", img: "/assets/braiding1.png", tag: "Best Seller" },
+  { title: "braiding2", price: "$65.00", img: "/assets/braiding2.png", tag: "New" },
+],
+
+Spa: [
+  { title: "Swedish Full Body Massage", price: "$85.00", img: "/assets/sweden.jpg", tag: "Relaxing" },
+  { title: "Deep Cleansing Facial", price: "$70.00", img: "/assets/Facial.jpg", tag: "Popular" },
+  { title: "Aromatherapy Spa Package", price: "$110.00", img: "/assets/Aromatherapy.jpg", tag: "Best Value" },
+  { title: "Luxury Manicure & Pedicure", price: "$55.00", img: "/assets/ManicurePedicure.jpg", tag: "New" },
+],
 };
 
 export function FeaturedProducts() {

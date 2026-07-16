@@ -1,301 +1,218 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Star, ShoppingBag, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { SiteHeader, SiteFooter, ProductCard } from "./index";
+import { ALL_PRODUCTS, CATEGORIES } from "@/constants/data/products";
 
-import product1 from "@/assets/product-1.jpg";
-import product2 from "@/assets/product-2.jpg";
-import product3 from "@/assets/product-3.jpg";
-import product4 from "@/assets/product-4.jpg";
-import collection1 from "@/assets/collection-1.jpg";
-import collection2 from "@/assets/collection-2.jpg";
-import collection3 from "@/assets/collection-3.jpg";
-import program1 from "@/assets/program-1.jpg";
-import program2 from "@/assets/program-2.jpg";
-import program3 from "@/assets/program-3.jpg";
-import mission1 from "@/assets/mission-1.jpg";
-import mission2 from "@/assets/mission-2.jpg";
-import accessoriesImg from "@/assets/accessories.jpg";
-import blog1 from "@/assets/blog-1.jpg";
-import blog2 from "@/assets/blog-2.jpg";
-import blog3 from "@/assets/blog-3.jpg";
-import bannerHair from "@/assets/banner-hair.jpg";
+
+
+
+const bannerHair = "/assets/banner-hair.jpg";
+
 
 export const Route = createFileRoute("/shop")({
-  head: () => ({
-    meta: [
-      { title: "Shop Premium Hair, Wigs & Accessories — Hair Harmony Store" },
-      {
-        name: "description",
-        content:
-          "Shop our full collection of Remy hair extensions, lace wigs, hair care, and hair accessories. Curly, straight, wavy — every texture and length.",
-      },
-      { property: "og:title", content: "Shop — Hair Harmony Store" },
-      {
-        property: "og:description",
-        content:
-          "Extensions, wigs, care and hair accessories, curated for every texture and every occasion.",
-      },
-    ],
-  }),
   component: ShopPage,
 });
 
-type Product = { title: string; price: string; img: string; tag?: string; category: string };
-
-const CATEGORIES = ["All", "Extensions", "Wigs", "Accessories", "Hair Care"] as const;
-
-const ALL_PRODUCTS: Product[] = [
-  // Extensions (straight/wavy/curly/coily)
-  {
-    title: 'Silky Black Straight 20"',
-    price: "$119.00",
-    img: product2,
-    tag: "Best",
-    category: "Extensions",
-  },
-  {
-    title: 'Platinum Blonde Straight 22"',
-    price: "$149.00",
-    img: product3,
-    tag: "Hot",
-    category: "Extensions",
-  },
-  {
-    title: 'Chocolate Brown Straight 18"',
-    price: "$109.00",
-    img: collection2,
-    category: "Extensions",
-  },
-  {
-    title: 'Auburn Straight Silk 24"',
-    price: "$159.00",
-    tag: "New",
-    img: mission2,
-    category: "Extensions",
-  },
-  {
-    title: 'Caramel Wavy Bundle 22"',
-    price: "$99.00",
-    img: product4,
-    tag: "New",
-    category: "Extensions",
-  },
-  { title: 'Beach Wave Ombre 20"', price: "$129.00", img: collection3, category: "Extensions" },
-  {
-    title: 'Honey Body Wave 18"',
-    price: "$119.00",
-    tag: "Hot",
-    img: program1,
-    category: "Extensions",
-  },
-  { title: 'Golden Loose Wave 24"', price: "$149.00", img: mission1, category: "Extensions" },
-  {
-    title: 'Curly Auburn Extension 18"',
-    price: "$89.00",
-    img: product1,
-    tag: "New",
-    category: "Extensions",
-  },
-  {
-    title: 'Deep Curl Natural 20"',
-    price: "$139.00",
-    img: program2,
-    tag: "Best",
-    category: "Extensions",
-  },
-  { title: 'Spiral Curl Bounce 16"', price: "$99.00", img: collection1, category: "Extensions" },
-  {
-    title: 'Kinky Coily Afro 14"',
-    price: "$129.00",
-    tag: "New",
-    img: program2,
-    category: "Extensions",
-  },
-  { title: '4C Natural Coil 16"', price: "$139.00", img: mission1, category: "Extensions" },
-
-  // Wigs
-  { title: "HD Lace Straight Wig", price: "$299.00", img: program3, tag: "Best", category: "Wigs" },
-  { title: "Loose Wave Lace Front", price: "$249.00", img: program1, tag: "Hot", category: "Wigs" },
-  { title: "Deep Curl Full Lace Wig", price: "$279.00", img: program2, category: "Wigs" },
-  {
-    title: "Body Wave Glueless Wig",
-    price: "$229.00",
-    img: collection2,
-    tag: "New",
-    category: "Wigs",
-  },
-
-  // Accessories
-  {
-    title: "Pearl Hair Pins Set",
-    price: "$24.00",
-    img: accessoriesImg,
-    tag: "New",
-    category: "Accessories",
-  },
-  { title: "Gold Hair Clip Duo", price: "$18.00", img: blog1, tag: "Hot", category: "Accessories" },
-  { title: "Tortoise Wide-Tooth Comb", price: "$22.00", img: blog2, category: "Accessories" },
-  {
-    title: "Silk Scrunchie Trio",
-    price: "$16.00",
-    img: blog3,
-    tag: "Best",
-    category: "Accessories",
-  },
-  {
-    title: "Bridal Pearl Tiara",
-    price: "$68.00",
-    tag: "New",
-    img: accessoriesImg,
-    category: "Accessories",
-  },
-  { title: "Vintage Barrette Set", price: "$28.00", img: blog1, category: "Accessories" },
-
-  // Hair Care
-  {
-    title: "Argan Repair Shampoo",
-    price: "$28.00",
-    img: collection1,
-    tag: "Best",
-    category: "Hair Care",
-  },
-  { title: "Silk Hydration Conditioner", price: "$32.00", img: collection3, category: "Hair Care" },
-  { title: "Keratin Hair Mask", price: "$44.00", tag: "Hot", img: mission1, category: "Hair Care" },
-  {
-    title: "Rose Nourishing Hair Oil",
-    price: "$36.00",
-    tag: "New",
-    img: mission2,
-    category: "Hair Care",
-  },
-];
 
 function ShopPage() {
-  const [active, setActive] = useState<(typeof CATEGORIES)[number]>("All");
-  const [query, setQuery] = useState("");
 
-  const filtered = useMemo(() => {
-    return ALL_PRODUCTS.filter((p) => {
-      const matchCat = active === "All" || p.category === active;
-      const matchQ = !query || p.title.toLowerCase().includes(query.toLowerCase());
-      return matchCat && matchQ;
+  const [active, setActive] =
+    useState<(typeof CATEGORIES)[number]>("All");
+
+  const [query,setQuery] = useState("");
+
+
+  const filtered = useMemo(()=>{
+
+    return ALL_PRODUCTS.filter((product)=>{
+
+      const categoryMatch =
+        active === "All" ||
+        product.category === active;
+
+
+      const searchMatch =
+        product.title
+        .toLowerCase()
+        .includes(query.toLowerCase());
+
+
+      return categoryMatch && searchMatch;
+
     });
-  }, [active, query]);
+
+  },[active,query]);
+
+
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+
+    <div className="min-h-screen bg-background">
+
       <SiteHeader />
 
-      {/* Page Hero */}
-      <section className="relative min-h-[520px] overflow-hidden bg-ink text-primary-foreground">
-        <img
-          src={bannerHair}
-          alt=""
-          aria-hidden
-          className="absolute inset-0 h-full w-full object-cover opacity-40"
-        />
 
-         <div className="absolute inset-0 bg-black/10" />
+     <section className="relative min-h-[620px] overflow-hidden">
 
-        <div className="relative mx-auto flex min-h-[620px] max-w-7xl items-center justify-center px-6 text-center">
-          <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.4em] text-gold">The Boutique</p>
+  <img
+    src={bannerHair}
+    alt=""
+    className="
+    absolute inset-0
+    h-full w-full
+    object-cover
+    opacity-40
+    "
+  />
 
-            <h1 className="mt-5 font-display text-6xl md:text-7xl">Shop All Hair</h1>
 
-            <p className="mx-auto mt-6 max-w-xl text-base leading-8 text-primary-foreground/75">
-              Every texture, every length, every finish. Ethically sourced Remy human hair, luxury
-              wigs, care and accessories.
-            </p>
-          </div>
+  <div className="absolute inset-0 bg-black/40"/>
+
+
+  <div className="
+  relative flex min-h-[620px]
+  items-center justify-center
+  text-center px-6
+  ">
+
+    <div className="max-w-3xl">
+
+      <p className="text-xs uppercase tracking-[0.4em] text-gold">
+        The Boutique
+      </p>
+
+
+      <h1 className="
+      mt-5
+      font-display
+      text-6xl
+      text-white
+      ">
+        Shop All Hair
+      </h1>
+
+
+      <p className="
+      mx-auto
+      mt-6
+      max-w-xl
+      text-base
+      leading-8
+      text-white/75
+      ">
+        Explore our luxury collection of premium hair extensions, wigs,
+        hair care essentials, accessories, braiding styles, and spa
+        treatments designed to enhance your beauty and confidence.
+      </p>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+      <div className="
+      sticky top-0 z-20
+      border-b bg-background/90
+      backdrop-blur
+      ">
+
+        <div className="
+        mx-auto max-w-7xl
+        flex flex-wrap gap-3
+        px-6 py-5
+        ">
+
+
+        {CATEGORIES.map(category=>(
+
+          <button
+            key={category}
+            onClick={()=>setActive(category)}
+            className={`
+            rounded-full px-5 py-2
+            text-xs uppercase tracking-widest
+            ${
+              active === category
+              ?
+              "bg-black text-white"
+              :
+              "border"
+            }
+            `}
+          >
+
+            {category}
+
+          </button>
+
+        ))}
+
+
+
+        <div className="
+        ml-auto
+        flex items-center
+        gap-2 border rounded-full
+        px-4
+        ">
+
+          <Search size={16}/>
+
+          <input
+            value={query}
+            onChange={(e)=>setQuery(e.target.value)}
+            placeholder="Search..."
+            className="
+            bg-transparent
+            outline-none
+            "
+          />
+
         </div>
-      </section>
 
-      {/* Toolbar */}
-      <div className="sticky top-[68px] z-30 border-b border-border bg-background/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-4 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-wrap gap-2">
-            {CATEGORIES.map((c) => (
-              <button
-                key={c}
-                onClick={() => setActive(c)}
-                className={`rounded-full px-4 py-2 text-xs font-medium uppercase tracking-widest transition ${
-                  active === c
-                    ? "bg-ink text-primary-foreground"
-                    : "border border-border bg-background text-foreground/70 hover:border-gold hover:text-gold"
-                }`}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
-          <div className="flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 lg:w-72">
-            <Search className="h-4 w-4 text-muted-foreground" />
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search products…"
-              className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
-            />
-          </div>
+
         </div>
+
       </div>
 
-      {/* Products grid */}
-      <section className="py-14">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-8 flex items-baseline justify-between">
-            <h2 className="font-display text-2xl">
-              {active}{" "}
-              <span className="ml-2 text-sm text-muted-foreground">({filtered.length} items)</span>
-            </h2>
-          </div>
 
-          {filtered.length === 0 ? (
-            <div className="rounded-lg border border-dashed border-border p-16 text-center text-muted-foreground">
-              No products match your search.
-            </div>
-          ) : (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {filtered.map((p) => (
-                <ProductCard key={p.title} p={p} />
-              ))}
-            </div>
-          )}
+
+      <section className="py-16">
+
+        <div className="
+        mx-auto max-w-7xl
+        grid gap-6
+        px-6
+        sm:grid-cols-2
+        lg:grid-cols-4
+        ">
+
+
+        {filtered.map(product=>(
+
+          <ProductCard
+            key={product.title}
+            p={product}
+          />
+
+        ))}
+
+
         </div>
+
       </section>
 
-      {/* Category quick chips as breadcrumbs at bottom */}
-      <section className="border-t border-border bg-cream py-14">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-gold">Not sure where to start?</p>
-          <h3 className="mt-2 font-display text-3xl">Browse by category</h3>
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {[
-              { label: "Extensions", img: product2 },
-              { label: "Wigs", img: program3 },
-              { label: "Accessories", img: accessoriesImg },
-              { label: "Hair Care", img: collection1 },
-            ].map((t) => (
-              <button
-                key={t.label}
-                onClick={() => setActive(t.label as (typeof CATEGORIES)[number])}
-                className="group overflow-hidden rounded-sm bg-background text-left"
-              >
-                <img
-                  src={t.img}
-                  alt={t.label}
-                  className="h-40 w-full object-cover transition group-hover:scale-105"
-                />
-                <div className="p-3 text-center font-display text-lg">{t.label}</div>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       <SiteFooter />
+
     </div>
+
   );
+
 }

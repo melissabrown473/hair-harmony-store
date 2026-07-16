@@ -1,23 +1,20 @@
 import { Link } from "@tanstack/react-router";
-import program1 from "@/assets/program-1.jpg";
-import program2 from "@/assets/program-2.jpg";
-import program3 from "@/assets/program-3.jpg";
 
 const programs = [
   {
     title: "Long Wavy Hair",
     desc: "Voluminous waves with natural movement and shine.",
-    img: program1,
+    img: "/assets/program-1.jpg",
   },
   {
     title: "Natural Curly Hair",
     desc: "Defined curls with softness, bounce and texture.",
-    img: program2,
+    img: "/assets/program-2.jpg",
   },
   {
     title: "Glossy Straight Hair",
     desc: "A sleek, silky finish for timeless elegance.",
-    img: program3,
+    img: "/assets/program-3.jpg",
   },
 ];
 
@@ -45,7 +42,6 @@ export function Programs() {
 
         </div>
 
-
         {/* Cards */}
 
         <div className="grid gap-8 md:grid-cols-3">
@@ -69,7 +65,6 @@ export function Programs() {
                 "
               />
 
-
               {/* Overlay */}
 
               <div
@@ -81,7 +76,6 @@ export function Programs() {
                   to-transparent
                 "
               />
-
 
               {/* Content */}
 
@@ -96,16 +90,13 @@ export function Programs() {
                   Hair Collection
                 </p>
 
-
                 <h3 className="font-display text-3xl">
                   {program.title}
                 </h3>
 
-
                 <p className="mt-3 max-w-xs text-sm leading-6 text-white/75">
                   {program.desc}
                 </p>
-
 
                 <Link
                   to="/shop"

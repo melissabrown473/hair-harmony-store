@@ -14,6 +14,7 @@ import { Programs } from "@/components/home/Programs";
 import { Blog } from "@/components/home/Blog";
 import { Testimonials } from "@/components/home/Testimonials";
 import { Newsletter } from "@/components/home/Newsletter";
+import { SpaBanner } from "@/components/home/SpaBanner";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -27,6 +28,7 @@ function Home() {
       <HeroSlider />
       <FeaturedCollections />
       {/* <HairCareStat /> */}
+      <SpaBanner/>
       <FeaturedProducts />
       <AccessoriesTeaser />
       

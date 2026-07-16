@@ -1,8 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "./index";
-import mission1 from "@/assets/mission-1.jpg";
-import mission2 from "@/assets/mission-2.jpg";
-import heroModel from "@/assets/hero-model.jpg";
+
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -30,11 +28,11 @@ function AboutPage() {
 
       <section className="relative min-h-[650px] overflow-hidden bg-ink text-white">
 
-        <img
-          src={heroModel}
-          alt="Hair Harmony model"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+       <img
+  src="/assets/hero-model.jpg"
+  alt="Hair Harmony model"
+  className="absolute inset-0 h-full w-full object-cover"
+/>
 
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20" />
 
@@ -87,18 +85,18 @@ function AboutPage() {
 
           <div className="relative grid grid-cols-2 gap-5">
 
-            <img
-              src={mission1}
-              alt=""
-              className="h-[420px] w-full rounded-2xl object-cover"
-            />
+           <img
+  src="/assets/mission-1.jpg"
+  alt=""
+  className="h-[420px] w-full rounded-2xl object-cover"
+/>
 
 
-            <img
-              src={mission2}
-              alt=""
-              className="mt-16 h-[420px] w-full rounded-2xl object-cover"
-            />
+           <img
+  src="/assets/mission-2.jpg"
+  alt=""
+  className="mt-16 h-[420px] w-full rounded-2xl object-cover"
+/>
 
 
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 rounded-xl bg-white px-8 py-5 text-center shadow-xl">

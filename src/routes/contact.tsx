@@ -29,11 +29,11 @@ function ContactPage() {
 
       <section className="relative min-h-[600px] overflow-hidden bg-ink text-white">
 
-        <img
-          src={heroModel}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+       <img
+  src="/assets/hero-model.jpg"
+  alt=""
+  className="absolute inset-0 h-full w-full object-cover"
+/>
 
         <div className="absolute inset-0 bg-black/65" />
 
